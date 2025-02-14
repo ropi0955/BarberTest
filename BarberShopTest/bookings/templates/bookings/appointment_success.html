@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Foglalás sikeresen rögzítve!</h2>
+  <p>Köszönjük, hogy időpontot foglaltál! Hamarosan visszaigazoljuk.</p>
+  <a href="{% url 'book_appointment' %}">Új foglalás</a>
+{% endblock %}

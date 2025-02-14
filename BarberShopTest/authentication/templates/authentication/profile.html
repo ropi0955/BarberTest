@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Felhasználói profil</h2>
+
+  <h3>Üdv, {{ user.username }}!</h3>
+  <p>Email címed: {{ user.email }}</p>
+  <!-- <p><a href="{% url 'logout' %}">Kijelentkezés</a></p> -->
+  <form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-info">Logout</button>
+  </form>
+
+  <h3>Korábbi foglalásaid</h3>
+
+  {% if appointments %}
+    <ul>
+      {% for appointment in appointments %}
+        <li>
+          <strong>{{ appointment.date }}</strong> - {{ appointment.barber.name }} - {{ appointment.service.name }}  
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Még nincs foglalásod.</p>
+  {% endif %}
+{% endblock %}

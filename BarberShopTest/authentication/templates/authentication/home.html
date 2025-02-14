@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Üdvözlünk a BarberShop oldalon!</h2>
+  <p>Válaszd ki, hova szeretnél menni:</p>
+
+  <nav>
+    {% if user.is_authenticated %}
+      <a href="{% url 'book_appointment' %}">Foglalás</a> |
+      <a href="{% url 'profile' %}">Profilom</a> |
+      <a href="{% url 'logout' %}">Kijelentkezés</a>
+    {% else %}
+      <a href="{% url 'login' %}">Bejelentkezés</a> |
+      <a href="{% url 'register' %}">Regisztráció</a>
+    {% endif %}
+  </nav>
+{% endblock %}
