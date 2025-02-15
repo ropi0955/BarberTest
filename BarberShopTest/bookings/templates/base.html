@@ -7,23 +7,26 @@
 </head>
 <body>
     <header>
-        <h1>BarberShop</h1>
+        <h1>
+            <nav>
+                <a href="{% url 'login' %}">BarberShop</a>
+            </nav>
+        </h1>
         <nav>
             {% if user.is_authenticated %}
                 <a href="{% url 'profile' %}">Profilom</a> |
-                <a href="{% url 'book_appointment' %}">Foglalás</a> |
                 <form method="post" action="{% url 'logout' %}" style="display:inline;">
                     {% csrf_token %}
                     <button type="submit">Kijelentkezés</button>
                 </form>
             {% else %}
                 <a href="{% url 'login' %}">Bejelentkezés</a> |
-                <a href="{% url 'register' %}">Regisztráció</a>
+                <a href="{% url 'register' %}">Regisztráció</a> |
+                <a href="{% url 'book_appointment' %}">Foglalás</a> |
+                <a href="{% url 'barbers' %}">Fodrászaink</a> |
+                <a href="{% url 'gallery' %}">Galéria</a> |
+                <a href="{% url 'contact' %}">Kapcsolat</a> |
             {% endif %}
-            <a href="{% url 'barbers' %}">Fodrászaink</a>
-            <a href="{% url 'gallery' %}">Galéria</a>
-            <a href="{% url 'contact' %}">Kapcsolat</a>
-            <a href="{% url 'book_appointment' %}">Foglalás</a>
         </nav>
     </header>
 
