@@ -128,7 +128,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Hitelesítés és átirányítás beállítások
 LOGIN_URL = "/login/"  # Ha nem vagy belépve, ide irányít
-LOGIN_REDIRECT_URL = "/profile/"  # Sikeres bejelentkezés után ide megy
+LOGIN_REDIRECT_URL = "/"  # Sikeres bejelentkezés után ide megy
 LOGOUT_REDIRECT_URL = "/"  # Kijelentkezés után vissza a bejelentkezési oldalra
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")

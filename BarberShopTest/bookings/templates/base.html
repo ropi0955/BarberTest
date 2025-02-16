@@ -79,7 +79,17 @@
             <a href="{% url 'barbers' %}">Fodrászaink</a>
             <a href="{% url 'gallery' %}">Galéria</a>
             <a href="{% url 'contact' %}">Kapcsolat</a>
+            {% if user.is_authenticated %}
             <a href="{% url 'book_appointment' %}">Foglalás</a>
+            <a href="{% url 'profile' %}">Felhasználó</a>
+            <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" style="background: none; border: none; color: #ffcc00; cursor: pointer;">Kijelentkezés</button>
+            </form>
+            {% else %}
+            <a href="{% url 'login' %}?next={% url 'book_appointment' %}" class="btn">Foglalás</a>
+            <a href="{% url 'login' %}">Bejelentkezés</a>
+            {% endif %}
         </nav>
     </header>
 

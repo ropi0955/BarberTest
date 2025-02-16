@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, logout
+from django.contrib.auth import login
 from .forms import UserRegistrationForm
 from django.contrib.auth.decorators import login_required
 from bookings.models import Appointment
@@ -23,4 +23,4 @@ def profile(request):
     return render(request, "authentication/profile.html", {"appointments": appointments})
 
 def home(request):
-    return render(request, "authentication/home.html")
+    return render(request, "bookings/home.html")

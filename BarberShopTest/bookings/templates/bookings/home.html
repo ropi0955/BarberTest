@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Üdvözöl a BarberShop!</h2>
+  <p>Válassz egy szolgáltatást, és foglalj időpontot profi fodrászainknál.</p>
+
+  <div class="buttons">
+    {% if user.is_authenticated %}
+    <a href="{% url 'book_appointment' %}" class="btn">Foglalj most!</a>
+    {% else %}
+    <a href="{% url 'login' %}?next={% url 'book_appointment' %}" class="btn">Foglalj most!</a>
+    {% endif %}
+    <a href="{% url 'barbers' %}" class="btn btn-outline">Ismerd meg a csapatot</a>
+  </div>
+
+  <div class="hero-image">
+    <img src="https://via.placeholder.com/800x400" alt="BarberShop képe">
+  </div>
+
+  <style>
+    h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .buttons {
+      margin-top: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      background: #ffcc00;
+      color: #000;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 5px;
+      margin: 10px;
+      transition: 0.3s;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #ffcc00;
+      color: #ffcc00;
+    }
+
+    .btn:hover {
+      background: #ff9900;
+      color: #000;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 800px;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+  </style>
+{% endblock %}
