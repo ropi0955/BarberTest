@@ -30,3 +30,6 @@ def gallery(request):
 
 def contact(request):
     return render(request, "bookings/contact.html")  # Kapcsolati adatok
+
+def home(request):
+    return render(request, "bookings/home.html")
