@@ -78,6 +78,7 @@
             <a href="{% url 'home' %}">Home</a>
             <a href="{% url 'barbers' %}">Fodrászaink</a>
             <a href="{% url 'gallery' %}">Galéria</a>
+            <a href="{% url 'price' %}">Áraink</a>
             {% if user.is_authenticated %}
             <a href="{% url 'book_appointment' %}">Foglalás</a>
             <a href="{% url 'profile' %}">Felhasználó</a>

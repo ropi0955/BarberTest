@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import appointment_success, book_appointment, barbers, gallery, contact, home
+from .views import appointment_success, book_appointment, barbers, gallery, contact, home, price
 
 urlpatterns = [
     path("", home, name="home"),
@@ -8,5 +8,6 @@ urlpatterns = [
     path("barbers/", barbers, name="barbers"),
     path("gallery/", gallery, name="gallery"),
     path("contact/", contact, name="contact"),
+    path("price/", price, name="price")
 
 ]

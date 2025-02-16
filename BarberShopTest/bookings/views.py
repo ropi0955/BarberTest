@@ -33,3 +33,7 @@ def contact(request):
 
 def home(request):
     return render(request, "bookings/home.html")
+
+def price(request):
+    services = Service.objects.all()
+    return render(request, "bookings/price.html", {"services": services})
