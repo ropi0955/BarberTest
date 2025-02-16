@@ -5,10 +5,12 @@
   <div class="barbers-container">
     {% for barber in barbers %}
       <div class="barber-card">
-        {% if barber.profile_image %}
-          <img src="{{ barber.profile_image.url }}" alt="{{ barber.name }}">
-        {% endif %}
-        <h3>{{ barber.name }}</h3>
+        <a href="{% url 'barber_detail' barber.id %}">
+          {% if barber.profile_image %}
+            <img src="{{ barber.profile_image.url }}" alt="{{ barber.name }}">
+          {% endif %}
+          <h3>{{ barber.name }}</h3>
+        </a>
         <p><strong>Specialitás:</strong> {{ barber.specialty }}</p>
         <p><strong>Tapasztalat:</strong> {{ barber.experience }} év</p>
       </div>
@@ -51,6 +53,16 @@
 
     .barber-card h3 {
       color: #ffcc00;
+      text-decoration: none;
+      transition: color 0.3s ease-in-out;
+    }
+
+    .barber-card a {
+      text-decoration: none;
+    }
+
+    .barber-card a:hover h3 {
+      color: #fff;
     }
   </style>
 {% endblock %}

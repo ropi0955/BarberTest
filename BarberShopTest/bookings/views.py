@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Barber, Service, Appointment, GalleryImage
 from .forms import AppointmentForm
@@ -23,6 +23,10 @@ def appointment_success(request):
 def barbers(request):
     barbers = Barber.objects.all()  # Az összes fodrász lekérése az adatbázisból
     return render(request, "bookings/barbers.html", {"barbers": barbers})
+
+def barber_detail(request, barber_id):
+    barber = get_object_or_404(Barber, id=barber_id)
+    return render(request, "bookings/barber_detail.html", {"barber": barber})
 
 def gallery(request):
     images = GalleryImage.objects.all()

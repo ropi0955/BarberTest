@@ -5,6 +5,7 @@ class Barber(models.Model):
     name = models.CharField(max_length=100)
     specialty = models.CharField(max_length=200)
     experience = models.IntegerField()
+    bio = models.TextField(blank=True)
     profile_image = models.ImageField(upload_to="barbers/", blank=True, null=True)
 
     def __str__(self):
