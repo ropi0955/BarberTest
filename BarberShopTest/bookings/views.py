@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Barber, Service, Appointment, GalleryImage
 from .forms import AppointmentForm
+from django.core.mail import send_mail
+from django.conf import settings
+from django.template.loader import render_to_string
 
 @login_required
 def book_appointment(request):
@@ -11,6 +14,20 @@ def book_appointment(request):
             appointment = form.save(commit=False)
             appointment.user = request.user
             appointment.save()
+
+            message = render_to_string("bookings/email_template.txt", {
+            "user": request.user,
+            "appointment": appointment,
+        })
+
+            send_mail(
+                subject="Foglalás visszaigazolása",
+                message=message,
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=[request.user.email],
+                fail_silently=False,
+            )
+
             return redirect("appointment_success")
     else:
         form = AppointmentForm()

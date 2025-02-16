@@ -132,3 +132,10 @@ LOGIN_REDIRECT_URL = "/"  # Sikeres bejelentkezés után ide megy
 LOGOUT_REDIRECT_URL = "/"  # Kijelentkezés után vissza a bejelentkezési oldalra
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "barbershopteszt@gmail.com"  # Itt add meg a saját e-mailed
+EMAIL_HOST_PASSWORD = "TO FILL"
