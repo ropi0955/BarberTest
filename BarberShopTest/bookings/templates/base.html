@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}BarberShop{% endblock %}</title>
+    
     <style>
-        /* Sötét téma alapstílusok */
+        /* 🌙 Sötét téma alapstílusok */
         body {
             background-color: #121212;
             color: #fff;
@@ -18,78 +19,138 @@
             min-height: 100vh;
         }
 
-        /* Navigációs sáv */
+        /* 🚀 Fejléc */
         header {
             background: #000;
             padding: 20px;
             text-align: center;
             width: 100%;
+            position: relative; /* A hamburger menü pozicionálásához */
         }
 
-        header h1 {
-            margin: 0;
+        /* 📌 BarberShop felirat középen */
+        .site-title {
             font-size: 28px;
             letter-spacing: 2px;
+            margin: 0;
         }
 
+        /* 🍔 Hamburger menü jobb oldalra helyezése */
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #fff;
+            position: absolute;
+            right: 20px; /* Jobb oldali igazítás */
+            top: 20px;
+        }
+
+        /* 📌 Navigációs menü */
         nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
             margin-top: 10px;
         }
 
-        nav a {
+        nav a, nav form button {
             color: #fff;
             text-decoration: none;
-            margin: 0 15px;
             font-size: 18px;
             padding: 8px 15px;
             transition: 0.3s ease-in-out;
             border-radius: 5px;
-            position: relative;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
         }
 
-        nav a:hover {
+        nav a:hover, nav form button:hover {
             background: #ffcc00;
             color: #000;
         }
 
-        /* Tartalom középre igazítása */
+        /* 📱 Reszponzív beállítások */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                text-align: center;
+                width: 100%;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background: #000;
+                padding: 10px 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav a, nav form button {
+                display: block;
+                padding: 10px;
+                width: 100%;
+            }
+        }
+
+        /* 🏗️ Tartalom középre igazítása */
         main {
             max-width: 900px;
             width: 100%;
             text-align: center;
             padding: 40px 20px;
+            flex-grow: 1;
         }
 
-        /* Lábjegyzet */
+        /* 📌 Lábjegyzet */
         footer {
             background: #000;
             text-align: center;
             padding: 15px;
-            position: fixed;
             width: 100%;
+            position: fixed;
             bottom: 0;
         }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>BarberShop</h1>
-        <nav>
+        <h1 class="site-title">BarberShop</h1> <!-- Középen marad minden nézetben -->
+        <button class="menu-toggle">&#9776;</button> <!-- Jobbra került -->
+        <nav class="nav-links">
             <a href="{% url 'home' %}">Home</a>
             <a href="{% url 'barbers' %}">Fodrászaink</a>
             <a href="{% url 'gallery' %}">Galéria</a>
             <a href="{% url 'price' %}">Áraink</a>
+
             {% if user.is_authenticated %}
-            <a href="{% url 'book_appointment' %}">Foglalás</a>
-            <a href="{% url 'profile' %}">Felhasználó</a>
-            <form action="{% url 'logout' %}" method="post" style="display: inline;">
-                {% csrf_token %}
-                <button type="submit" style="background: none; border: none; color: #ffcc00; cursor: pointer;">Kijelentkezés</button>
-            </form>
+                <a href="{% url 'book_appointment' %}">Foglalás</a>
+                <a href="{% url 'profile' %}">Felhasználó</a>
+                <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit">Kijelentkezés</button>
+                </form>
             {% else %}
-            <a href="{% url 'login' %}?next={% url 'book_appointment' %}" class="btn">Foglalás</a>
-            <a href="{% url 'contact' %}">Kapcsolat</a>
-            <a href="{% url 'login' %}">Bejelentkezés</a>
+                <a href="{% url 'login' %}?next={% url 'book_appointment' %}">Foglalás</a>
+                <a href="{% url 'contact' %}">Kapcsolat</a>
+                <a href="{% url 'login' %}">Bejelentkezés</a>
             {% endif %}
         </nav>
     </header>
@@ -101,5 +162,13 @@
     <footer>
         <p>&copy; 2025 BarberShop</p>
     </footer>
+
+    <script>
+        // 🍔 Mobil hamburger menü vezérlés
+        document.querySelector(".menu-toggle").addEventListener("click", function () {
+            document.querySelector(".nav-links").classList.toggle("active");
+        });
+    </script>
+
 </body>
 </html>

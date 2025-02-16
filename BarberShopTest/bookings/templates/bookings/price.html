@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Áraink és szolgáltatásaink</h2>
+<div class="service-container">
+    {% for service in services %}
+    <div class="service">
+        <h3><strong>{{ service.name }}</strong></h3>
+        <p><strong>Ár:</strong> - {{ service.price }} Ft</p>
+        <p><strong>időtartam:</strong> {{ service.duration }} perc</p></br>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}
