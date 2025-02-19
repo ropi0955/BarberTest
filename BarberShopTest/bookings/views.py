@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Barber, Service, Appointment, GalleryImage
 from .forms import AppointmentForm
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage
 from django.conf import settings
 from django.template.loader import render_to_string
+from .utils import create_calendar_event
 
 @login_required
 def book_appointment(request):
@@ -19,14 +20,26 @@ def book_appointment(request):
             "user": request.user,
             "appointment": appointment,
         })
+            # send_mail(
+            #     subject="Foglalás visszaigazolása",
+            #     message=message,
+            #     from_email=settings.EMAIL_HOST_USER,
+            #     recipient_list=[request.user.email],
+            #     fail_silently=False,
+            # )
 
-            send_mail(
-                subject="Foglalás visszaigazolása",
-                message=message,
+            # return redirect("appointment_success")
+
+            ics_file_path = create_calendar_event(appointment)
+
+            email = EmailMessage(
+                subject="Foglalás visszaigazolása - BarberShop",
+                body=message,
                 from_email=settings.EMAIL_HOST_USER,
-                recipient_list=[request.user.email],
-                fail_silently=False,
+                to=[request.user.email],
             )
+            email.attach_file(ics_file_path)  # .ics fájl csatolása
+            email.send()
 
             return redirect("appointment_success")
     else:
