@@ -1,8 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>Üdvözöl a BarberShop!</h2>
-  <p>Válassz egy szolgáltatást, és foglalj időpontot profi fodrászainknál.</p>
+  <h1>Üdvözöl a BarberShop!</h1>
+  <h2>Válassz egy szolgáltatást, és foglalj időpontot profi fodrászainknál.</h2>
+
+  <p>
+    A BarberShop egy prémium férfi fodrászat, ahol a hagyomány és a modern stílus találkozik.  
+    Tapasztalt borbélyaink a legjobb technikákkal és minőségi eszközökkel dolgoznak, hogy a tökéletes frizurát és borotválást biztosítsák számodra.
+  </p>
+  <p>
+    Nálunk nem csak egy hajvágást kapsz, hanem egy teljes élményt.  
+    Lazulj el egy jó beszélgetés mellett, miközben profi kezek formálják a stílusodat.
+  </p>
 
   <div class="buttons">
     {% if user.is_authenticated %}

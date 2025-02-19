@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="barber-profile">
+    {% if barber.profile_image %}
+      <img src="{{ barber.profile_image.url }}" alt="{{ barber.name }}">
+    {% endif %}
+    <h2>{{ barber.name }}</h2>
+    <p><strong>Specialitás:</strong> {{ barber.specialty }}</p>
+    <p><strong>Tapasztalat:</strong> {{ barber.experience }} év</p>
+    <p>{{ barber.bio }}</p>
+    <a href="{% url 'barbers' %}" class="back-button">Vissza</a>
+    <a href="{% url 'book_appointment' %}"class="back-button">Foglalás</a>
+  </div>
+
+  <style>
+    .barber-profile {
+      text-align: center;
+      max-width: 600px;
+      margin: auto;
+    }
+    .barber-profile img {
+      width: 200px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    }
+    .barber-profile h2 {
+      color: #ffcc00;
+      margin-top: 10px;
+    }
+    .barber-profile .back-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 15px;
+      background: #ffcc00;
+      color: #000;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style>
+{% endblock %}
