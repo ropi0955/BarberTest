@@ -3,7 +3,6 @@ Kedves {{ user.username }},
 Sikeresen lefoglaltad az időpontodat!
 
 📅 Dátum: {{ appointment.date }}
-⏰ Időpont: {{ appointment.time }}
 
 Ha módosítani szeretnéd a foglalásodat, lépj kapcsolatba velünk.
 

@@ -20,15 +20,6 @@ def book_appointment(request):
             "user": request.user,
             "appointment": appointment,
         })
-            # send_mail(
-            #     subject="Foglalás visszaigazolása",
-            #     message=message,
-            #     from_email=settings.EMAIL_HOST_USER,
-            #     recipient_list=[request.user.email],
-            #     fail_silently=False,
-            # )
-
-            # return redirect("appointment_success")
 
             ics_file_path = create_calendar_event(appointment)
 
@@ -38,7 +29,7 @@ def book_appointment(request):
                 from_email=settings.EMAIL_HOST_USER,
                 to=[request.user.email],
             )
-            email.attach_file(ics_file_path)  # .ics fájl csatolása
+            email.attach_file(ics_file_path)
             email.send()
 
             return redirect("appointment_success")
@@ -51,7 +42,7 @@ def appointment_success(request):
     return render(request, "bookings/appointment_success.html")
 
 def barbers(request):
-    barbers = Barber.objects.all()  # Az összes fodrász lekérése az adatbázisból
+    barbers = Barber.objects.all()
     return render(request, "bookings/barbers.html", {"barbers": barbers})
 
 def barber_detail(request, barber_id):
@@ -60,10 +51,10 @@ def barber_detail(request, barber_id):
 
 def gallery(request):
     images = GalleryImage.objects.all()
-    return render(request, "bookings/gallery.html", {"images": images})  # Képek megjelenítése
+    return render(request, "bookings/gallery.html", {"images": images})
 
 def contact(request):
-    return render(request, "bookings/contact.html")  # Kapcsolati adatok
+    return render(request, "bookings/contact.html")
 
 def home(request):
     return render(request, "bookings/home.html")

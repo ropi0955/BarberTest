@@ -1,22 +1,67 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>Felhasználói profil</h2>
+  <div class="profile-container">
+    <h2>Felhasználói profil</h2>
 
-  <h3>Üdv, {{ user.username }}!</h3>
-  <p>Email címed: {{ user.email }}</p>
+    <h3>Üdv, {{ user.username }}!</h3>
+    <p><strong>Email címed:</strong> {{ user.email }}</p>
 
-  <h3>Korábbi foglalásaid</h3>
+    <h3>Korábbi foglalásaid</h3>
 
-  {% if appointments %}
-    <ul>
-      {% for appointment in appointments %}
-        <li>
-          <strong>{{ appointment.date }}</strong> - {{ appointment.barber.name }} - {{ appointment.service.name }}  
-        </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>Még nincs foglalásod.</p>
-  {% endif %}
+    {% if appointments %}
+      <ul>
+        {% for appointment in appointments %}
+          <li>
+            <strong>{{ appointment.date }} - {{ appointment.barber.name }} - {{ appointment.service.name }}  </strong>
+          </li  >
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+
+  <style>
+    .profile-container {
+      max-width: 400px;
+      background: rgba(20, 20, 20, 0.5);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      margin: 50px auto;
+      text-align: center;
+    }
+
+    h3 {
+      color: #ffcc00;
+    }
+
+    p {
+      color: #fff;
+      font-size: 16px;
+    }
+
+    .styled-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: #ffcc00;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s ease-in-out;
+    }
+
+    .styled-link:hover {
+      text-decoration: underline;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      color: #fff;
+      font-size: 16px;
+      margin: 5px 0;
+    }
+  </style>
 {% endblock %}

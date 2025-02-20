@@ -1,10 +1,57 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>Időpontfoglalás</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Foglalás</button>
-  </form>
+  <div class="appointment-container">
+    <h2>Időpontfoglalás</h2>
+    <form method="post" class="appointment-form">
+      {% csrf_token %}
+      <div class="form-group">
+        {{ form.as_p }}
+      </div>
+      <button type="submit" class="styled-button">Foglalás</button>
+    </form>
+  </div>
+
+  <style>
+    .appointment-container {
+      max-width: 400px;
+      background: rgba(20, 20, 20, 0.5);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      margin: 50px auto;
+      text-align: center;
+    }
+
+    .appointment-form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .form-group {
+      text-align: left;
+      width: 100%;
+    }
+
+    .styled-button {
+      background-color: #ffcc00;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+      width: 80%;
+      margin-top: 10px;
+    }
+
+    .styled-button:hover {
+      background-color: #e6b800;
+    }
+  </style>
 {% endblock %}

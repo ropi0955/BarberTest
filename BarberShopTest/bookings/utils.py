@@ -11,12 +11,10 @@ def create_calendar_event(appointment):
     event = Event()
     event.add("summary", "Foglalás visszaigazolása - BarberShop")
 
-    # 🔹 Ellenőrizzük, hogy van-e `time` mező az `appointment` objektumban
     appointment_time = getattr(appointment, "time", None)
     if appointment_time:
         start_datetime = make_aware(datetime.combine(appointment.date, appointment_time))
     else:
-        # Ha nincs időmező, használjunk egy alapértelmezett időpontot (pl. 10:00)
         default_time = datetime.strptime("10:00", "%H:%M").time()
         start_datetime = make_aware(datetime.combine(appointment.date, default_time))
 
@@ -32,4 +30,4 @@ def create_calendar_event(appointment):
     with open(temp_file.name, "wb") as f:
         f.write(cal.to_ical())
 
-    return temp_file.name  # Az ics fájl útvonala
+    return temp_file.name

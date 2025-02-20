@@ -12,7 +12,7 @@ def register(request):
             user.set_password(form.cleaned_data["password"])
             user.save()
             login(request, user)
-            return redirect("book_appointment")  # Sikeres regisztráció után a foglalás oldalra irányít
+            return redirect("book_appointment")
     else:
         form = UserRegistrationForm()
     return render(request, "authentication/register.html", {"form": form})
