@@ -1,11 +1,72 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>Bejelentkezés</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Bejelentkezés</button>
-  </form>
-  <p>Nincs még fiókod? <a href="{% url 'register' %}">Regisztrálj</a></p>
+  <div class="login-container">
+    <h2>Bejelentkezés</h2>
+    <form method="post" class="login-form">
+      {% csrf_token %}
+      <div class="form-group">
+        {{ form.as_p }}
+      </div>
+      <button type="submit" class="styled-button">Bejelentkezés</button>
+    </form>
+    <p class="register-text">Nincs még fiókod? <a href="{% url 'register' %}" class="styled-link">Regisztrálj</a></p>
+  </div>
+
+  <style>
+    .login-container {
+      max-width: 300px;
+      background: rgba(20, 20, 20, 0.5);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      margin: 50px auto;
+      text-align: center;
+    }
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .form-group {
+      text-align: left;
+    }
+
+    .styled-button {
+      background-color: #ffcc00;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+      width: 80%;
+      margin-top: 10px;
+    }
+
+    .styled-button:hover {
+      background-color: #e6b800;
+    }
+
+    .styled-link {
+      color: #ffcc00;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s ease-in-out;
+    }
+
+    .styled-link:hover {
+      text-decoration: underline;
+    }
+
+    .register-text {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+  </style>
 {% endblock %}
+

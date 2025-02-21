@@ -14,26 +14,21 @@
         {% endfor %}
       </div>
 
-      <!-- Nyilak a csúsztatáshoz -->
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
-
-      <!-- Lapozási pontok -->
       <div class="swiper-pagination"></div>
     </div>
   </div>
 
   <style>
-    /* Az egész oldal középre igazítása */
     main {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      height: 100vh; /* Az egész képernyőt lefedje */
+      height: 100vh;
     }
 
-    /* Galéria tartó elem */
     .gallery-container {
       display: flex;
       justify-content: center;
@@ -42,26 +37,24 @@
       height: auto;
     }
 
-    /* Swiper csúszka beállítása */
     .swiper {
       width: 90%;
       max-width: 800px;
       height: 500px;
-      margin: auto; /* Középre igazítás */
+      margin: auto;
       position: relative;
     }
 
-    /* Képek formázása */
     .swiper-slide {
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: #1c1c1c;
+      background: rgba(20, 20, 20, 0.5);
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
       height: 100%;
     }
 
@@ -80,7 +73,6 @@
       color: #ffcc00;
     }
 
-    /* Nyilak középre igazítása */
     .swiper-button-next,
     .swiper-button-prev {
       top: 50%;
@@ -88,7 +80,6 @@
       color: #ffcc00;
     }
 
-    /* Mobil reszponzivitás */
     @media (max-width: 768px) {
     .swiper {
         width: 95%;
@@ -118,7 +109,7 @@
     document.addEventListener("DOMContentLoaded", function () {
       setTimeout(() => {
         var swiper = new Swiper(".mySwiper", {
-          loop: true, // Végtelenített görgetés
+          loop: true,
           autoplay: {
             delay: 3000,
             disableOnInteraction: false

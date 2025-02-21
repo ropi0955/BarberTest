@@ -5,7 +5,7 @@ from .views import register, profile, home
 urlpatterns = [
     path("login/", LoginView.as_view(template_name="authentication/login.html"), name="login"),
     path("register/", register, name="register"),
-    path("logout/", LogoutView.as_view(next_page="home"), name="logout"),  # Kijelentkezés után főoldalra irányítás
-    path("profile/", profile, name="profile"),  # Profil oldal
+    path("logout/", LogoutView.as_view(next_page="home"), name="logout"),
+    path("profile/", profile, name="profile"),
 ]
 

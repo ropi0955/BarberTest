@@ -1,7 +1,43 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>Foglalás sikeresen rögzítve!</h2>
-  <p>Köszönjük, hogy időpontot foglaltál! Hamarosan visszaigazoljuk.</p>
-  <a href="{% url 'book_appointment' %}">Új foglalás</a>
+  <div class="confirmation-container">
+    <h2>Foglalás sikeresen rögzítve!</h2>
+    <p>Köszönjük, hogy időpontot foglaltál! Hamarosan visszaigazoljuk.</p>
+    <a href="{% url 'book_appointment' %}" class="styled-link">Új foglalás</a>
+  </div>
+
+  <style>
+    .confirmation-container {
+      max-width: 400px;
+      background: rgba(20, 20, 20, 0.5);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      margin: 50px auto;
+      text-align: center;
+    }
+
+    h2 {
+      color: #ffcc00;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .styled-link {
+      color: #ffcc00;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s ease-in-out;
+    }
+
+    .styled-link:hover {
+      text-decoration: underline;
+    }
+  </style>
 {% endblock %}
+
