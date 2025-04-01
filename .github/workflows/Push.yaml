@@ -3,7 +3,6 @@ name: Django CD
 on:
   push:
     branches: [ "main" ]
-    paths: [ "Dockerfile" ]
 
 jobs:
   push:
