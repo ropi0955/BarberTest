@@ -24,7 +24,7 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
-          files: BarbershopTest/TEST-*.xml
+          files: BarberShopTest/TEST-*.xml
       - name: Run PEP8
         continue-on-error: true
         run: pycodestyle --exclude ".venv,**/migrations/" --max-line-length 120 --format '::warning file=%(path)s,line=%(row)d,col=%(col)d::%(code)s %(text)s'  .
