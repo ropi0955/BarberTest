@@ -18,7 +18,7 @@ jobs:
         run: pip install -r BarberShopTest/requirements.txt
 
       - name: Run Tests
-        run: python BarberShopTest/manage.py test --testrunner xmlrunner.extra.djangotestrunner.XMLTestRunner
+        run: python BarberShopTest/manage.py test bookings --testrunner xmlrunner.extra.djangotestrunner.XMLTestRunner
 
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
