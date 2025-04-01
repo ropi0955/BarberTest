@@ -42,7 +42,7 @@ resource "azurerm_container_app" "containerapp" {
 
       env {
         name  = "DJANGO_ALLOWED_HOST"
-        value = "*,${join(",", var.extraAllowedHosts)}"
+        value = "*"
       }
       env {
         name  = "DJANGO_DB_TYPE"
