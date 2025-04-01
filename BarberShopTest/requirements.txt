@@ -1,10 +1,14 @@
 Django==5.1.6
 django-widget-tweaks==1.5.0
-Pillow==10.1.0
 python-dotenv==1.0.1
 djangorestframework==3.14.0
 django-filter==23.5
-gunicorn==21.2.0
-whitenoise==6.6.0
 django-extensions==3.2.3
 icalendar==5.0.11
+gunicorn~=23.0.0
+pycodestyle~=2.12.1
+whitenoise~=6.9.0
+pillow~=11.1.0
+psycopg2-binary~=2.9.10 # postgresql backend
+unittest-xml-reporting
+checkov
